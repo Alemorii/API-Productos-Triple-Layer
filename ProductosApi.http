@@ -1,0 +1,56 @@
+@host = http://localhost:5182
+
+### Listar todos
+GET {{host}}/api/productos
+
+### Obtener uno (existe)
+GET {{host}}/api/productos/1
+
+### Obtener uno (no existe, 404)
+GET {{host}}/api/productos/999
+
+### Crear (201)
+POST {{host}}/api/productos
+Content-Type: application/json
+
+{
+    "nombre": "Ryzen 7 5700X",
+    "precio": 350000,
+    "categoria": "CPU"
+}
+
+### Crear inválido (400)
+POST {{host}}/api/productos
+Content-Type: application/json
+
+{
+  "nombre": "ab",
+  "precio": 0,
+  "categoria": ""
+}
+
+### Actualizar (200)
+PUT {{host}}/api/productos/1
+Content-Type: application/json
+
+{
+  "nombre": "Ryzen 5 5600G",
+  "precio": 290000,
+  "categoria": "CPU"
+}
+
+### Actualizar inexistente (404)
+PUT {{host}}/api/productos/999
+Content-Type: application/json
+
+{
+  "nombre": "Cualquiera",
+  "precio": 100,
+  "categoria": "CPU"
+}
+
+### Eliminar (204)
+DELETE {{host}}/api/productos/3
+
+### Eliminar inexistente (404)
+DELETE {{host}}/api/productos/999
