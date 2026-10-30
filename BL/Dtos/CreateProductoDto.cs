@@ -16,4 +16,5 @@ public class CreateProductoDto
 
     [Required(ErrorMessage = "La categoría es obligatoria.")]
     public string Categoria { get; set; } = string.Empty;
+    // el activo lo ponemos al crearlo
 }
